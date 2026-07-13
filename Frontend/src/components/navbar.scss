@@ -1,0 +1,38 @@
+.app-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: #1a1f27;
+    border-bottom: 1px solid #2a2f3a;
+
+    &__brand {
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #fff;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__greeting {
+        color: #cfd3da;
+        font-size: 0.9rem;
+    }
+
+    &__logout {
+        background: transparent;
+        border: 1px solid #3a3f4a;
+        color: #fff;
+        padding: 0.4rem 0.9rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #2a2f3a;
+        }
+    }
+}
