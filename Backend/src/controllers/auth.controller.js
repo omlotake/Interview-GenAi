@@ -3,6 +3,18 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const tokenBlacklistModel = require('../models/blacklist.model')
 
+// Cross-site cookie options. Frontend (vercel.app) and Backend (onrender.com)
+// are different domains in production, so the cookie must explicitly allow
+// being sent cross-site (sameSite: "none") and must be marked secure (only
+// sent over HTTPS - both Vercel and Render serve over HTTPS, so this is
+// safe). httpOnly stops client-side JS from reading the cookie, which
+// protects it from XSS.
+const cookieOptions = {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none"
+}
+
 /**
  * @name registerUserController
  * @description Register a new user, expects username, email, and password in the request body
@@ -42,7 +54,7 @@ async function registerUserController(req,res){
     
     )
 
-    res.cookie("token",token)
+    res.cookie("token",token,cookieOptions)
 
     res.status(201).json({
         message: "User registered successfully",
@@ -86,7 +98,7 @@ async function loginUserController(req,res){
         process.env.JWT_SECRET,
         { expiresIn:"1d"}
     )
-    res.cookie("token",token)
+    res.cookie("token",token,cookieOptions)
     res.status(200).json({
         message: "Login successful",
         user: {
@@ -109,7 +121,7 @@ async function logoutUserController(req,res){
        await tokenBlacklistModel.create({token})
     }
 
-    res.clearCookie("token")
+    res.clearCookie("token",cookieOptions)
     res.status(200).json({
         message:"User logged out successfully"
     })
