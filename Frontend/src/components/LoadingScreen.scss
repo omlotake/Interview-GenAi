@@ -1,0 +1,69 @@
+.loading-screen {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.75rem;
+    background-color: #12151c;
+
+    &__spinner {
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+
+    &__ring {
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        border-style: solid;
+    }
+
+    &__ring--outer {
+        width: 64px;
+        height: 64px;
+        border-width: 4px;
+        border-color: #2a2f3a;
+        border-top-color: #e1034d;
+        animation: spin 1s linear infinite;
+    }
+
+    &__ring--inner {
+        top: 12px;
+        left: 12px;
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+        border-color: #2a2f3a;
+        border-bottom-color: #4f8cff;
+        animation: spin-reverse 0.8s linear infinite;
+    }
+
+    &__message {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #cfd3da;
+        text-align: center;
+        max-width: 320px;
+        animation: fade-in 0.4s ease;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}

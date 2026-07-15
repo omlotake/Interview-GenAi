@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../style/interview.scss'
 import { useInterview } from '../hooks/useInterview.js'
 import { useNavigate, useParams } from 'react-router'
-
+import LoadingScreen from '../../../components/LoadingScreen.jsx'
 
 
 const NAV_ITEMS = [
@@ -71,12 +71,8 @@ const Interview = () => {
 
 
     if (loading || !report) {
-        return (
-            <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
-            </main>
-        )
-    }
+    return <LoadingScreen messages={[ "Loading your interview plan..." ]} />
+}
 
     // ── Safe fallbacks: AI response may occasionally omit a field, so we
     // default every array field to [] here, once, instead of repeating
