@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-   baseURL: import.meta.env.PROD ? "" : import.meta.env.VITE_API_BASE_URL,
+    baseURL: import.meta.env.PROD ? "" : import.meta.env.VITE_API_BASE_URL,
     withCredentials: true,
 })
 
@@ -16,7 +16,7 @@ export const generateInterviewReport = async ({ jobDescription, selfDescription,
     formData.append("selfDescription", selfDescription)
     formData.append("resume", resumeFile)
 
-    const response = await api.post("/api/interview/", formData, {
+    const response = await api.post("/api/interview", formData, {
         headers: {
             "Content-Type": "multipart/form-data"
         }
@@ -41,7 +41,7 @@ export const getInterviewReportById = async (interviewId) => {
  * @description Service to get all interview reports of logged in user.
  */
 export const getAllInterviewReports = async () => {
-    const response = await api.get("/api/interview/")
+    const response = await api.get("/api/interview")
 
     return response.data
 }
