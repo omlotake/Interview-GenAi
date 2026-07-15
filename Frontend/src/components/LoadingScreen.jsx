@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './loading-screen.scss'
+import './LoadingScreen.scss'
 
 const DEFAULT_MESSAGES = [ "Loading..." ]
 
