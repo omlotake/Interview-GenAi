@@ -36,3 +36,18 @@
         }
     }
 }
+
+// ── Responsive (Mobile) ─────────────────────────────────────────────────────
+@media (max-width: 480px) {
+    .app-navbar {
+        padding: 0.75rem 1rem;
+
+        &__brand {
+            font-size: 0.95rem;
+        }
+
+        &__greeting {
+            display: none;
+        }
+    }
+}

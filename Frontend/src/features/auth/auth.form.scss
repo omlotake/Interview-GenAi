@@ -42,3 +42,17 @@ main{
         text-decoration: none;
     }
 }
+
+// ── Responsive (Mobile) ─────────────────────────────────────────────────────
+@media (max-width: 480px) {
+    main {
+        padding: 1.5rem 1rem;
+        box-sizing: border-box;
+
+        .form-container {
+            min-width: unset;
+            width: 100%;
+            max-width: 380px;
+        }
+    }
+}
